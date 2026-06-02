@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://industriallystrong.com/schemas/litho_frame.schema.json",
+  "title": "LithoFrame",
+  "type": "object",
+  "required": [
+    "frame_id",
+    "stage",
+    "retrieved_regimes",
+    "ranked_hypotheses"
+  ],
+  "properties": {
+    "frame_id": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "stage": {
+      "type": "string",
+      "enum": [
+        "pattern",
+        "retrieval",
+        "hypothesis_update",
+        "final"
+      ]
+    },
+    "pattern": {
+      "$ref": "#/$defs/MaskPattern"
+    },
+    "best_result": {
+      "$ref": "#/$defs/SimulationResult"
+    },
+    "retrieved_regimes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RetrievedRegime"
+      }
+    },
+    "ranked_hypotheses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ProcessHypothesis"
+      }
+    },
+    "insight": {
+      "$ref": "#/$defs/InsightBlock"
+    }
+  },
+  "$defs": {
+    "MaskPattern": {
+      "type": "object",
+      "required": [
+        "pattern_id",
+        "pattern_type",
+        "width",
+        "height",
+        "pixels"
+      ],
+      "properties": {
+        "pattern_id": { "type": "string" },
+        "pattern_type": {
+          "type": "string",
+          "enum": ["line", "contact", "corner", "dense_array", "custom"]
+        },
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "pixels": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": { "type": "number" }
+          }
+        }
+      }
+    },
+    "SimulationResult": {
+      "type": "object",
+      "required": [
+        "aerial_image",
+        "wafer_image",
+        "fidelity_score",
+        "edge_error",
+        "area_error"
+      ],
+      "properties": {
+        "aerial_image": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": { "type": "number" }
+          }
+        },
+        "wafer_image": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": { "type": "number" }
+          }
+        },
+        "fidelity_score": { "type": "number" },
+        "edge_error": { "type": "number" },
+        "area_error": { "type": "number" }
+      }
+    },
+    "RetrievedRegime": {
+      "type": "object",
+      "required": [
+        "regime_id",
+        "distance",
+        "focus_nm",
+        "dose_scale",
+        "blur_sigma",
+        "threshold"
+      ],
+      "properties": {
+        "regime_id": { "type": "string" },
+        "distance": { "type": "number" },
+        "focus_nm": { "type": "number" },
+        "dose_scale": { "type": "number" },
+        "blur_sigma": { "type": "number" },
+        "threshold": { "type": "number" },
+        "regime_class": { "type": ["string", "null"] }
+      }
+    },
+    "ProcessHypothesis": {
+      "type": "object",
+      "required": [
+        "hypothesis_id",
+        "focus_nm",
+        "dose_scale",
+        "blur_sigma",
+        "threshold",
+        "posterior_weight",
+        "fidelity_score",
+        "edge_error",
+        "area_error"
+      ],
+      "properties": {
+        "hypothesis_id": { "type": "string" },
+        "focus_nm": { "type": "number" },
+        "dose_scale": { "type": "number" },
+        "blur_sigma": { "type": "number" },
+        "threshold": { "type": "number" },
+        "posterior_weight": { "type": "number" },
+        "fidelity_score": { "type": "number" },
+        "edge_error": { "type": "number" },
+        "area_error": { "type": "number" }
+      }
+    },
+    "InsightBlock": {
+      "type": "object",
+      "required": [
+        "mode",
+        "primary_driver",
+        "message"
+      ],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": ["nominal", "stress", "exploratory"]
+        },
+        "primary_driver": { "type": "string" },
+        "message": { "type": "string" }
+      }
+    }
+  }
+}

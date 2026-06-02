@@ -1,0 +1,105 @@
+{
+  "frame_id": 12,
+  "stage": "hypothesis_update",
+  "pattern": {
+    "pattern_id": "corner_8",
+    "pattern_type": "corner",
+    "width": 8,
+    "height": 8,
+    "pixels": [
+      [0,0,1,1,0,0,0,0],
+      [0,0,1,1,0,0,0,0],
+      [1,1,1,1,0,0,0,0],
+      [1,1,1,1,0,0,0,0],
+      [0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0]
+    ]
+  },
+  "best_result": {
+    "aerial_image": [
+      [0.04,0.11,0.42,0.48,0.12,0.02,0.00,0.00],
+      [0.11,0.24,0.61,0.67,0.16,0.03,0.00,0.00],
+      [0.42,0.61,0.88,0.90,0.21,0.04,0.00,0.00],
+      [0.48,0.67,0.90,0.92,0.24,0.05,0.00,0.00],
+      [0.12,0.16,0.21,0.24,0.08,0.02,0.00,0.00],
+      [0.02,0.03,0.04,0.05,0.02,0.00,0.00,0.00],
+      [0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00],
+      [0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00]
+    ],
+    "wafer_image": [
+      [0,0,0,1,0,0,0,0],
+      [0,0,1,1,0,0,0,0],
+      [0,1,1,1,0,0,0,0],
+      [1,1,1,1,0,0,0,0],
+      [0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0]
+    ],
+    "fidelity_score": 0.91,
+    "edge_error": 0.07,
+    "area_error": 0.04
+  },
+  "retrieved_regimes": [
+    {
+      "regime_id": "r2",
+      "distance": 0.18,
+      "focus_nm": 10.0,
+      "dose_scale": 0.95,
+      "blur_sigma": 1.5,
+      "threshold": 0.48,
+      "regime_class": "corner_rounding_sensitive"
+    },
+    {
+      "regime_id": "r4",
+      "distance": 0.27,
+      "focus_nm": 5.0,
+      "dose_scale": 1.02,
+      "blur_sigma": 1.8,
+      "threshold": 0.50,
+      "regime_class": "dense_corner_interaction"
+    }
+  ],
+  "ranked_hypotheses": [
+    {
+      "hypothesis_id": "h_r2_0_0",
+      "focus_nm": 10.0,
+      "dose_scale": 0.95,
+      "blur_sigma": 1.5,
+      "threshold": 0.48,
+      "posterior_weight": 0.42,
+      "fidelity_score": 0.91,
+      "edge_error": 0.07,
+      "area_error": 0.04
+    },
+    {
+      "hypothesis_id": "h_r2_0_5",
+      "focus_nm": 15.0,
+      "dose_scale": 0.95,
+      "blur_sigma": 1.5,
+      "threshold": 0.48,
+      "posterior_weight": 0.31,
+      "fidelity_score": 0.88,
+      "edge_error": 0.09,
+      "area_error": 0.06
+    },
+    {
+      "hypothesis_id": "h_r4_1_0",
+      "focus_nm": 5.0,
+      "dose_scale": 1.02,
+      "blur_sigma": 1.8,
+      "threshold": 0.50,
+      "posterior_weight": 0.19,
+      "fidelity_score": 0.84,
+      "edge_error": 0.11,
+      "area_error": 0.08
+    }
+  ],
+  "insight": {
+    "mode": "nominal",
+    "primary_driver": "corner_intensity_rolloff",
+    "message": "Competing process states remain plausible around the inner-corner intensity gradient."
+  }
+}
